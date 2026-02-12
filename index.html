@@ -105,15 +105,18 @@
             color: var(--white);
             padding: 0.8rem 2rem;
             border-radius: 50px;
-            font-weight: 700;
+            text-decoration: none;
+            font-weight: 600;
             transition: all 0.3s ease;
-            border: 2px solid var(--primary-pink);
         }
 
         .cta-button:hover {
-            background: transparent;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 103, 134, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 103, 134, 0.4);
+        }
+
+        .cta-button::after {
+            display: none;
         }
 
         .hero {
@@ -126,55 +129,55 @@
         }
 
         .hero-content {
-            max-width: 1400px;
-            width: 100%;
-            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .hero-text h1 {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
+            letter-spacing: 2px;
             animation: fadeInUp 1s ease;
         }
 
         .hero-text h1 span {
             color: var(--primary-pink);
+            text-shadow: 0 0 40px rgba(255, 103, 134, 0.6);
         }
 
         .hero-text p {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             line-height: 1.8;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
             opacity: 0.9;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            animation: fadeInUp 1s ease 0.2s backwards;
         }
 
         .hero-buttons {
             display: flex;
             gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .btn-primary {
             background: var(--primary-pink);
             color: var(--white);
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            border: 2px solid var(--primary-pink);
-            transition: all 0.3s ease;
-            display: inline-block;
         }
 
         .btn-primary:hover {
-            background: transparent;
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(255, 103, 134, 0.4);
         }
@@ -182,87 +185,62 @@
         .btn-secondary {
             background: transparent;
             color: var(--white);
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            border: 2px solid var(--white);
-            transition: all 0.3s ease;
-            display: inline-block;
+            border: 2px solid var(--primary-pink);
         }
 
         .btn-secondary:hover {
-            background: var(--white);
-            color: var(--black);
+            background: var(--primary-pink);
             transform: translateY(-3px);
         }
 
         section {
-            padding: 6rem 5%;
+            padding: 5rem 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .section-title {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             color: var(--primary-pink);
+            letter-spacing: 2px;
+            text-align: center;
         }
 
         .problem-section {
-            background: var(--off-black);
-            border-radius: 30px;
-            padding: 4rem;
             margin-bottom: 4rem;
-            border: 2px solid var(--primary-pink);
         }
 
         .problem-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
         .problem-card {
-            background: rgba(255, 103, 134, 0.05);
-            border: 2px solid rgba(255, 103, 134, 0.2);
+            background: var(--off-black);
+            border: 2px solid var(--primary-pink);
             border-radius: 20px;
-            padding: 2rem;
+            padding: 2.5rem;
             transition: all 0.3s ease;
         }
 
         .problem-card:hover {
             transform: translateY(-5px);
-            border-color: var(--primary-pink);
-            box-shadow: 0 10px 30px rgba(255, 103, 134, 0.2);
+            box-shadow: 0 15px 40px rgba(255, 103, 134, 0.3);
         }
 
         .problem-card h3 {
-            color: var(--primary-pink);
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            font-weight: 700;
+            color: var(--primary-pink);
         }
 
         .problem-card p {
             line-height: 1.7;
             opacity: 0.9;
-        }
-
-        .stat-highlight {
-            background: linear-gradient(135deg, var(--primary-pink), #ff8aa3);
-            color: var(--white);
-            padding: 1.5rem 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            text-align: center;
-            font-size: 1.3rem;
-            font-weight: 700;
-            box-shadow: 0 10px 30px rgba(255, 103, 134, 0.3);
         }
 
         .waste-section {
@@ -272,55 +250,10 @@
             margin: 4rem 0;
         }
 
-        .waste-points {
-            list-style: none;
-            margin-top: 2rem;
-        }
-
-        .waste-points li {
-            padding: 1rem 0;
-            padding-left: 2rem;
-            position: relative;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        .waste-points li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--primary-pink);
-            font-weight: 700;
-            font-size: 1.5rem;
-        }
-
-        .solution-hero {
-            text-align: center;
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, var(--primary-pink), #ff8aa3);
-            border-radius: 30px;
-            margin: 4rem 0;
-        }
-
-        .solution-hero h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3rem, 6vw, 5rem);
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            letter-spacing: 3px;
-        }
-
-        .solution-hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
             margin-top: 3rem;
         }
 
@@ -329,13 +262,13 @@
             border: 2px solid rgba(255, 103, 134, 0.3);
             border-radius: 20px;
             padding: 2.5rem;
-            transition: all 0.3s ease;
             text-align: center;
+            transition: all 0.3s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
             border-color: var(--primary-pink);
+            transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(255, 103, 134, 0.3);
         }
 
@@ -346,7 +279,7 @@
 
         .feature-card h3 {
             color: var(--primary-pink);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 1rem;
         }
 
@@ -358,18 +291,16 @@
         .comparison-table {
             background: var(--off-black);
             border-radius: 20px;
-            padding: 3rem;
+            padding: 2rem;
             margin: 3rem 0;
-            overflow-x: auto;
         }
 
         .comparison-row {
             display: grid;
             grid-template-columns: 200px 1fr 1fr;
-            gap: 2rem;
+            gap: 1rem;
             padding: 1.5rem;
             border-bottom: 1px solid rgba(255, 103, 134, 0.2);
-            align-items: center;
         }
 
         .comparison-row:last-child {
@@ -379,24 +310,19 @@
         .platform-name {
             font-weight: 700;
             color: var(--primary-pink);
-            font-size: 1.1rem;
         }
 
         .comparison-con {
-            color: #ff4d4d;
-            opacity: 0.8;
+            opacity: 0.7;
         }
 
         .comparison-pro {
-            color: #4ecdc4;
+            color: var(--teal);
             font-weight: 600;
         }
 
         .how-it-works {
-            background: var(--off-black);
-            border-radius: 30px;
-            padding: 4rem;
-            margin: 4rem 0;
+            text-align: center;
         }
 
         .steps-grid {
@@ -436,38 +362,162 @@
             opacity: 0.9;
         }
 
-        .data-section {
-            background: linear-gradient(135deg, rgba(255, 103, 134, 0.1), rgba(78, 205, 196, 0.1));
-            border-radius: 30px;
-            padding: 4rem;
-            margin: 4rem 0;
+        /* ═══════════════════════════════════════════════════════════════════
+           APP SCREENSHOTS CAROUSEL
+        ═══════════════════════════════════════════════════════════════════ */
+        .app-showcase {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(255, 103, 134, 0.05), rgba(78, 205, 196, 0.05));
+            margin: 5rem 0;
         }
 
-        .data-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+        .app-showcase-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
             margin-top: 3rem;
+            padding: 2rem 0;
         }
 
-        .data-card {
-            background: var(--off-black);
-            border: 2px solid var(--primary-pink);
-            border-radius: 15px;
-            padding: 2rem;
+        .carousel-container {
+            display: flex;
+            gap: 3rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding: 1rem 0 2rem;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .screenshot-card {
+            min-width: 320px;
+            scroll-snap-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
         }
 
-        .data-number {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            color: var(--primary-pink);
-            margin-bottom: 0.5rem;
+        .phone-mockup {
+            width: 280px;
+            height: 560px;
+            background: var(--off-black);
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 8px rgba(255, 103, 134, 0.1),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.05);
+            position: relative;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
         }
 
-        .data-label {
+        .phone-mockup:hover {
+            transform: translateY(-10px);
+        }
+
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 25px;
+            background: var(--black);
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 32px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .phone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .screenshot-info {
+            max-width: 300px;
+        }
+
+        .screenshot-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .screenshot-info p {
+            line-height: 1.7;
             opacity: 0.9;
-            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-nav button {
+            background: var(--off-black);
+            border: 2px solid var(--primary-pink);
+            color: var(--primary-pink);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-nav button:hover {
+            background: var(--primary-pink);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 103, 134, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--primary-pink);
+            transform: scale(1.3);
         }
 
         footer {
@@ -543,6 +593,15 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .phone-mockup {
+                width: 240px;
+                height: 480px;
+            }
+
+            .screenshot-card {
+                min-width: 280px;
+            }
         }
     </style>
 </head>
@@ -554,8 +613,10 @@
         <nav>
             <a href="#problem">Problem</a>
             <a href="#solution">Solution</a>
+            <a href="#app-showcase">App Preview</a>
             <a href="#how-it-works">How It Works</a>
             <a href="#contact">Contact</a>
+            <a href="#" class="cta-button">Join Waitlist</a>
         </nav>
     </header>
 
@@ -573,183 +634,61 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="#solution" class="btn-primary">Learn More</a>
-                    <a href="#how-it-works" class="btn-secondary">How It Works</a>
+                    <a href="#app-showcase" class="btn-secondary">View App</a>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="problem">
-        <h2 class="section-title">The Problem: Increasing Student Hardship</h2>
+        <h2 class="section-title">The Problem</h2>
         
         <div class="problem-section">
-            <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; opacity: 0.9;">
-                Students face rising living costs — accommodation, food, materials, textbooks, appliances. 
-                The financial pressure has never been greater.
+            <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; opacity: 0.9; text-align: center;">
+                Students face rising living costs and mounting waste. The financial and environmental pressure has never been greater.
             </p>
 
             <div class="problem-grid">
                 <div class="problem-card">
                     <h3>📈 17% Cost Increase</h3>
                     <p>
-                        According to Save the Student Survey, the average student's monthly living costs 
-                        have increased by 17%, up from £924 to £1,078. London continues to be the most 
-                        expensive region in the UK, with average student living costs of £1,211 per month.
+                        Average student monthly living costs increased by 17%, up from £924 to £1,078. 
+                        Financial pressure is at an all-time high.
                     </p>
                 </div>
 
                 <div class="problem-card">
-                    <h3>💸 Loan Shortfall</h3>
+                    <h3>💔 41% Consider Dropping Out</h3>
                     <p>
-                        According to the ONS, around 58% of students receiving student loans said the loan 
-                        did not cover their living costs. The average student Maintenance Loan falls short 
-                        of covering their living costs by £582 per month.
+                        41% of students considered dropping out due to money worries. 58% report 
+                        their maintenance loan doesn't cover living costs.
                     </p>
                 </div>
 
                 <div class="problem-card">
-                    <h3>📊 92% Feel the Squeeze</h3>
+                    <h3>♻️ 691k Tonnes Waste</h3>
                     <p>
-                        According to the ONS, 92% of higher-education students said their cost of living 
-                        had increased compared to the previous year. The average parental contribution 
-                        has dropped to £146 per month.
+                        UK higher education generates 691,091 tonnes of waste annually. UCL alone 
+                        discards 38 tonnes during move-out periods.
                     </p>
-                </div>
-            </div>
-
-            <div class="stat-highlight">
-                41% have considered dropping out of university due to money-related issues
-            </div>
-        </div>
-
-        <div class="waste-section">
-            <h3 style="font-size: 2rem; color: var(--primary-pink); margin-bottom: 2rem;">
-                But at the SAME TIME, a huge amount of waste happens...
-            </h3>
-            
-            <p style="font-size: 1.2rem; margin-bottom: 2rem; font-weight: 600;">
-                The waste is NOT because students are careless — it's because the university lifestyle forces waste:
-            </p>
-
-            <ul class="waste-points">
-                <li>Students constantly move accommodations and they have to do instantaneously</li>
-                <li>They can't carry large or heavy items home</li>
-                <li>They can't store items over summer</li>
-                <li>Many items are required for short-term use only</li>
-                <li>Leases end abruptly, so students must throw away items fast</li>
-            </ul>
-
-            <p style="font-size: 1.3rem; margin-top: 2rem; text-align: center; color: var(--primary-pink); font-weight: 700;">
-                This is not a student problem. It is a system problem.
-            </p>
-        </div>
-
-        <div class="data-section">
-            <h3 style="font-size: 2rem; color: var(--primary-pink); margin-bottom: 1rem; text-align: center;">
-                The Scale of University Waste
-            </h3>
-            
-            <div class="data-grid">
-                <div class="data-card">
-                    <div class="data-number">691,091</div>
-                    <div class="data-label">Tonnes of waste annually from UK higher-education institutions</div>
-                </div>
-
-                <div class="data-card">
-                    <div class="data-number">38</div>
-                    <div class="data-label">Tonnes of extra waste at UCL during move-out alone</div>
-                </div>
-
-                <div class="data-card">
-                    <div class="data-number">25</div>
-                    <div class="data-label">Tonnes diverted by Nottingham Trent University (2023-2025)</div>
-                </div>
-
-                <div class="data-card">
-                    <div class="data-number">12,272</div>
-                    <div class="data-label">Kg donated by Chester students to British Heart Foundation (2024)</div>
-                </div>
-
-                <div class="data-card">
-                    <div class="data-number">11,500+</div>
-                    <div class="data-label">Items of kitchenware redistributed by Sheffield since 2021</div>
-                </div>
-
-                <div class="data-card">
-                    <div class="data-number">17,465</div>
-                    <div class="data-label">Meals worth of food donated by Sheffield students since 2015</div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="solution">
-        <div class="solution-hero">
-            <h2>INTRODUCING STUNIFY</h2>
-            <p>
-                A safe, campus-verified platform where students can give away, borrow, swap, 
-                or sell items — from kitchenware to textbooks to furniture — instead of throwing them away.
-            </p>
-        </div>
-
-        <h2 class="section-title">Why Stunify?</h2>
-
-        <div class="comparison-table">
-            <div class="comparison-row">
-                <div class="platform-name">WhatsApp Groups</div>
-                <div class="comparison-con">❌ Messy, not safe, no campus filtering</div>
-                <div class="comparison-pro">✅ Stunify: Verified, structured, safe</div>
-            </div>
-
-            <div class="comparison-row">
-                <div class="platform-name">Facebook Marketplace</div>
-                <div class="comparison-con">❌ Mixed community, not student-specific, profanity</div>
-                <div class="comparison-pro">✅ Stunify: Fully student-only ecosystem</div>
-            </div>
-
-            <div class="comparison-row">
-                <div class="platform-name">University Swap Events</div>
-                <div class="comparison-con">❌ Happen once/year</div>
-                <div class="comparison-pro">✅ Stunify: Always on, 24/7</div>
-            </div>
-
-            <div class="comparison-row">
-                <div class="platform-name">Freecycle / Olio</div>
-                <div class="comparison-con">❌ Not tailored to student needs</div>
-                <div class="comparison-pro">✅ Stunify: Hyper-local, campus-specific</div>
-            </div>
-        </div>
-
-        <div class="problem-grid" style="margin-top: 3rem;">
-            <div class="problem-card">
-                <h3>🎯 All Year Round</h3>
-                <p>
-                    Existing programmes only work during MOVE-OUT periods — Stunify App works ALL YEAR.
-                </p>
-            </div>
-
-            <div class="problem-card">
-                <h3>⚡ Digital & Fast</h3>
-                <p>
-                    Existing programmes are OFFLINE — Stunify app is digital, fast, searchable.
-                </p>
-            </div>
-
-            <div class="problem-card">
-                <h3>🎪 Need + Waste</h3>
-                <p>
-                    University programs manage waste, not need—Stunify achieves both simultaneously.
-                </p>
-            </div>
-        </div>
-
-        <h2 class="section-title" style="margin-top: 5rem;">Key Features</h2>
+        <h2 class="section-title">The Solution: Stunify</h2>
+        
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.9; max-width: 800px; margin-left: auto; margin-right: auto;">
+            A safe, campus-verified platform where students can give away, borrow, swap, or sell items — 
+            instead of throwing them away.
+        </p>
 
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">🎓</div>
                 <h3>Student Verification</h3>
-                <p>Sign in with a university email to verify student status. Safe and trusted community.</p>
+                <p>Sign in with university email to verify student status. Safe and trusted community.</p>
             </div>
 
             <div class="feature-card">
@@ -783,7 +722,11 @@
             </div>
         </div>
     </section>
-      <section id="app-showcase" class="app-showcase">
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         APP SCREENSHOTS SHOWCASE
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section id="app-showcase" class="app-showcase">
         <div class="app-showcase-container">
             <h2 class="section-title">See Stunify in Action</h2>
             <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
@@ -935,7 +878,7 @@
         <p style="font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.9; max-width: 700px; margin-left: auto; margin-right: auto;">
             Be part of the solution. Join thousands of students building a sustainable sharing economy.
         </p>
-        <a href="#" class="btn-primary" style="font-size: 1.2rem; padding: 1.5rem 4rem;"> Request for Stunify</a>
+        <a href="#" class="btn-primary" style="font-size: 1.2rem; padding: 1.5rem 4rem;">Join Waitlist Now</a>
     </section>
 
     <footer id="contact">
@@ -947,66 +890,107 @@
                     Share smarter, live better.
                 </p>
             </div>
+
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#problem">Problem</a></li>
-                    <li><a href="#solution">Solution</a></li>
+                    <li><a href="#problem">The Problem</a></li>
+                    <li><a href="#solution">Our Solution</a></li>
+                    <li><a href="#app-showcase">App Preview</a></li>
                     <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
+
             <div class="footer-section">
-                <h3>Legal</h3>
+                <h3>Resources</h3>
                 <ul>
+                    <li><a href="https://great01-cyber.github.io/stunifyprivacy-policy/">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Community Guidelines</a></li>
-                    <li><a href="#">Safety Tips</a></li>
+                    <li><a href="#">Contact Us</a></li>
                 </ul>
             </div>
+
             <div class="footer-section">
                 <h3>Contact</h3>
-                <ul>
-                    <li><a href="mailto:support@stunify.co">support@stunify.co</a></li>
-                    <li>United Kingdom</li>
-                    <li style="margin-top: 1rem;">
-                        <a href="#" style="display: inline-block; margin-right: 1rem;">Twitter</a>
-                        <a href="#" style="display: inline-block; margin-right: 1rem;">Instagram</a>
-                        <a href="#" style="display: inline-block;">LinkedIn</a>
-                    </li>
-                </ul>
+                <p style="opacity: 0.8; line-height: 1.7;">
+                    📧 hello@stunify.co.uk<br>
+                    📍 Sheffield, United Kingdom<br>
+                    🌐 <a href="https://great01-cyber.github.io/stunifyapp/">www.stunify.co.uk</a>
+                </p>
             </div>
         </div>
+
         <div class="footer-bottom">
             <p>&copy; 2025 Stunify. All rights reserved. Built with ❤️ for students.</p>
         </div>
     </footer>
 
     <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        // Carousel functionality
+        const carousel = document.getElementById('carousel');
+        const indicatorsContainer = document.getElementById('indicators');
+        const cards = document.querySelectorAll('.screenshot-card');
+        let currentIndex = 0;
+
+        // Create indicators
+        cards.forEach((_, index) => {
+            const indicator = document.createElement('div');
+            indicator.className = 'indicator' + (index === 0 ? ' active' : '');
+            indicator.onclick = () => scrollToIndex(index);
+            indicatorsContainer.appendChild(indicator);
         });
 
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            const currentScroll = window.pageYOffset;
+        function updateIndicators() {
+            const scrollLeft = carousel.scrollLeft;
+            const cardWidth = cards[0].offsetWidth + 48; // card width + gap
+            currentIndex = Math.round(scrollLeft / cardWidth);
+            
+            document.querySelectorAll('.indicator').forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
 
-            if (currentScroll > 100) {
-                header.style.background = 'rgba(10, 10, 10, 0.95)';
-                header.style.boxShadow = '0 5px 20px rgba(255, 103, 134, 0.1)';
+        function scrollCarousel(direction) {
+            const cardWidth = cards[0].offsetWidth + 48;
+            carousel.scrollBy({
+                left: direction * cardWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        function scrollToIndex(index) {
+            const cardWidth = cards[0].offsetWidth + 48;
+            carousel.scrollTo({
+                left: index * cardWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        carousel.addEventListener('scroll', updateIndicators);
+
+        // Auto-scroll every 5 seconds
+        setInterval(() => {
+            if (currentIndex < cards.length - 1) {
+                scrollCarousel(1);
             } else {
-                header.style.background = 'rgba(10, 10, 10, 0.8)';
-                header.style.boxShadow = 'none';
+                scrollToIndex(0);
+            }
+        }, 5000);
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        carousel.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        carousel.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) {
+                scrollCarousel(1);
+            } else if (touchEndX - touchStartX > 50) {
+                scrollCarousel(-1);
             }
         });
     </script>
