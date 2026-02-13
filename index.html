@@ -302,15 +302,22 @@ section {
 /* ================= APP SHOWCASE ================= */
 
 .app-showcase {
-    padding: 5rem 5%;
-    background: linear-gradient(135deg, rgba(255, 103, 134, 0.05), rgba(78, 205, 196, 0.05));
-    margin: 5rem auto;       
-    max-width: 1400px;     
+    padding: 6rem 5%;
+    background: linear-gradient(135deg, rgba(255,103,134,0.05), rgba(78,205,196,0.05));
+    margin: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .carousel-wrapper {
     margin-top: 3rem;
     overflow: hidden;
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .carousel-container {
@@ -322,6 +329,7 @@ section {
     justify-content: center;
     padding: 2rem 0;
     scrollbar-width: none;
+    width: 100%;
 }
 
 .carousel-container::-webkit-scrollbar {
@@ -855,7 +863,7 @@ footer {
         <div class="footer-section">
             <h3>Contact</h3>
             <p style="opacity: 0.8; line-height: 1.7;">
-                📧 hello@stunify.co.uk<br>
+                📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d55585151527d4e494853545b44135e52134856">[email&#160;protected]</a><br>
                 📍 Sheffield, United Kingdom<br>
                 🌐 <a href="https://great01-cyber.github.io/stunifyapp/">www.stunify.co.uk</a>
             </p>
@@ -867,7 +875,7 @@ footer {
     </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Carousel functionality
 const carousel = document.getElementById('carousel');
 const indicatorsContainer = document.getElementById('indicators');
@@ -927,15 +935,4 @@ carousel.addEventListener('touchstart', e => {
     touchStartX = e.changedTouches[0].screenX;
 });
 
-carousel.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    if (touchStartX - touchEndX > 50) {
-        scrollCarousel(1);
-    } else if (touchEndX - touchStartX > 50) {
-        scrollCarousel(-1);
-    }
-});
-</script>
-
-</body>
-</html>
+carousel.addEventListener('touchend', e
