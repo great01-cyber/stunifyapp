@@ -305,9 +305,6 @@ section {
     padding: 6rem 5%;
     background: linear-gradient(135deg, rgba(255,103,134,0.05), rgba(78,205,196,0.05));
     margin: 5rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .carousel-wrapper {
@@ -315,9 +312,6 @@ section {
     overflow: hidden;
     max-width: 100%;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .carousel-container {
@@ -326,7 +320,7 @@ section {
     overflow-x: auto;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 2rem 0;
     scrollbar-width: none;
     width: 100%;
@@ -863,7 +857,7 @@ footer {
         <div class="footer-section">
             <h3>Contact</h3>
             <p style="opacity: 0.8; line-height: 1.7;">
-                📧 hello@stunify.co.uk<br>
+                📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="eb838e878784ab989f9e85828d92c58884c59e80">[email&#160;protected]</a><br>
                 📍 Sheffield, United Kingdom<br>
                 🌐 <a href="https://great01-cyber.github.io/stunifyapp/">www.stunify.co.uk</a>
             </p>
@@ -875,7 +869,7 @@ footer {
     </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Carousel functionality
 const carousel = document.getElementById('carousel');
 const indicatorsContainer = document.getElementById('indicators');
