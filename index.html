@@ -13,1127 +13,411 @@
     --white: #FFFFFF;
     --teal: #4ECDC4;
 }
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--black);
-    color: var(--white);
-    overflow-x: hidden;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
 .bg-pattern {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: 0.03;
-    background-image: 
-        repeating-linear-gradient(45deg, transparent, transparent 35px, var(--primary-pink) 35px, var(--primary-pink) 36px),
-        repeating-linear-gradient(-45deg, transparent, transparent 35px, var(--primary-pink) 35px, var(--primary-pink) 36px);
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.03;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, var(--primary-pink) 35px, var(--primary-pink) 36px),
+                      repeating-linear-gradient(-45deg, transparent, transparent 35px, var(--primary-pink) 35px, var(--primary-pink) 36px);
     animation: slidePattern 20s linear infinite;
 }
-@keyframes slidePattern {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(50px, 50px); }
-}
+@keyframes slidePattern { 0% { transform: translate(0,0); } 100% { transform: translate(50px,50px); } }
+
+/* HEADER */
 header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 1.5rem 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 103, 134, 0.1);
-    z-index: 1000;
+    position: fixed; top: 0; width: 100%; padding: 1.5rem 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,103,134,0.1); z-index: 1000;
 }
-.floating-download {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: var(--off-black);
-    border: 2px solid var(--primary-pink);
-    border-radius: 16px;
-    padding: 1rem 1.2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    z-index: 999;
-    box-shadow: 0 10px 40px rgba(255, 103, 134, 0.3);
-}
+.logo { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--primary-pink); text-shadow: 0 0 20px rgba(255,103,134,0.5); letter-spacing: 2px; }
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a { text-decoration: none; color: var(--white); font-weight: 500; transition: all 0.3s; position: relative; }
+nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--primary-pink); transition: width 0.3s ease; }
+nav a:hover::after { width: 100%; }
+.cta-button { background: var(--primary-pink); padding: 0.8rem 2rem; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; }
+.cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,103,134,0.4); }
+.cta-button::after { display: none; }
+.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.menu-toggle span { width: 25px; height: 3px; background: var(--primary-pink); }
 
-.floating-download p {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.6;
-    text-align: center;
-}
-
-.store-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    background: var(--primary-pink);
-    color: white;
-    text-decoration: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
-
-.store-badge:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 103, 134, 0.4);
-    background: white;
-    color: var(--primary-pink);
-}
-
-.store-badge:hover svg path {
-    fill: var(--primary-pink);
-}
-
-@media (max-width: 480px) {
-    .floating-download {
-        bottom: 1rem;
-        right: 1rem;
-        left: 1rem;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
-.logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.5rem;
-    color: var(--primary-pink);
-    text-shadow: 0 0 20px rgba(255, 103, 134, 0.5);
-    letter-spacing: 2px;
-}
-nav {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-}
-nav a {
-    text-decoration: none;
-    color: var(--white);
-    font-weight: 500;
-    transition: all 0.3s;
-    position: relative;
-}
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary-pink);
-    transition: width 0.3s ease;
-}
-nav a:hover::after {
-    width: 100%;
-}
-.cta-button {
-    background: var(--primary-pink);
-    padding: 0.8rem 2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-.cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(255, 103, 134, 0.4);
-}
-.cta-button::after {
-    display: none;
-}
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-}
-.menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background: var(--primary-pink);
-}
+/* HERO */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     padding: 8rem 5% 4rem;
+    background-image: url('assets/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .hero-content {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 680px;
+    background: rgba(10,10,10,0.55);
+    padding: 3rem;
+    border-radius: 24px;
+    backdrop-filter: blur(4px);
 }
 .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(3rem,8vw,6rem);
     line-height: 1.1;
     margin-bottom: 1.5rem;
     letter-spacing: 2px;
     animation: fadeInUp 1s ease;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8);
 }
-.hero span {
-    color: var(--primary-pink);
-    text-shadow: 0 0 40px rgba(255, 103, 134, 0.6);
-}
+.hero span { color: var(--primary-pink); text-shadow: 0 0 40px rgba(255,103,134,0.6); }
 .hero p {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     line-height: 1.8;
-    margin-bottom: 2.5rem;
-    max-width: 700px;
-    opacity: 0.9;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.9);
 }
 .hero-buttons {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
 }
 .btn-primary, .btn-secondary {
-    padding: 1.2rem 3rem;
+    padding: 1rem 2.5rem;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: all 0.3s ease;
     display: inline-block;
 }
-.btn-primary {
-    background: var(--primary-pink);
-    color: var(--white);
-}
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(255, 103, 134, 0.4);
-}
-.btn-secondary {
-    background: transparent;
-    color: var(--white);
-    border: 2px solid var(--primary-pink);
-}
-.btn-secondary:hover {
-    background: var(--primary-pink);
-    transform: translateY(-3px);
-}
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-section {
-    padding: 5rem 5%;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-.section-title {
-    text-align: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    color: var(--primary-pink);
-    margin-bottom: 1rem;
-    letter-spacing: 2px;
-}
-.section-subtitle {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 3rem;
-    opacity: 0.9;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.8;
-}
-.stats-section {
-    background: linear-gradient(135deg, rgba(255,103,134,0.05), rgba(78,205,196,0.05));
-    padding: 4rem 5%;
-    margin: 3rem 0;
-}
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-.stat-card {
-    text-align: center;
-    padding: 2rem;
-}
-.stat-number {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3.5rem;
-    color: var(--primary-pink);
-    text-shadow: 0 0 20px rgba(255, 103, 134, 0.4);
-    margin-bottom: 0.5rem;
-}
-.stat-label {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    line-height: 1.5;
-}
-.problem-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-.problem-card {
-    background: var(--off-black);
-    border: 2px solid var(--primary-pink);
-    border-radius: 20px;
-    padding: 2.5rem;
-    transition: all 0.3s ease;
-}
-.problem-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255, 103, 134, 0.3);
-}
-.problem-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--primary-pink);
-}
-.problem-card p {
-    line-height: 1.7;
-    opacity: 0.9;
-}
-.waste-impact {
-    background: var(--off-black);
-    border-radius: 20px;
-    padding: 3rem;
-    margin: 3rem 0;
-}
-.waste-impact h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.5rem;
-    color: var(--primary-pink);
-    margin-bottom: 2rem;
-    text-align: center;
-}
-.waste-reasons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-.waste-reason {
-    padding: 1.5rem;
-    background: rgba(255, 103, 134, 0.05);
-    border-radius: 10px;
-    border-left: 4px solid var(--primary-pink);
-}
-.waste-callout {
-    text-align: center;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--primary-pink);
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: rgba(255, 103, 134, 0.1);
-    border-radius: 10px;
-}
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
-    margin-top: 3rem;
-}
-.feature-card {
-    background: var(--off-black);
-    border: 2px solid rgba(255, 103, 134, 0.3);
-    border-radius: 20px;
-    padding: 2.5rem;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-.feature-card:hover {
-    border-color: var(--primary-pink);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255, 103, 134, 0.3);
-}
-.feature-icon {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-}
-.feature-card h3 {
-    color: var(--primary-pink);
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-}
-.comparison-section {
-    background: var(--off-black);
-    border-radius: 20px;
-    padding: 4rem 3rem;
-    
-    /* THE FIX: */
-    max-width: 1200px;      /* Matches your hero and stats width for consistency */
-    margin: 4rem auto;      /* The 'auto' centers the entire container horizontally */
-    width: 90%;
-}
-.comparison-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-    justify-content: center;
-}
-.comparison-item {
-    padding: 2rem;
-    background: rgba(255, 103, 134, 0.05);
-    border-radius: 15px;
-}
-.comparison-item h4 {
-    font-size: 1.3rem;
-    color: var(--primary-pink);
-    margin-bottom: 1rem;
-}
-.comparison-list {
-    list-style: none;
-}
-.comparison-list li {
-    padding: 0.5rem 0;
-    padding-left: 1.5rem;
-    position: relative;
-    opacity: 0.8;
-}
-.comparison-list li::before {
-    content: '✗';
-    position: absolute;
-    left: 0;
-    color: #ff4444;
-    font-weight: bold;
-}
-.comparison-advantage {
-    margin-top: 1rem;
-    padding-left: 1.5rem;
-    color: var(--teal);
-    font-weight: 600;
-    position: relative;
-}
-.comparison-advantage::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--teal);
-    font-weight: bold;
-}
-.app-showcase {
-    padding: 6rem 5%;
-    background: linear-gradient(135deg, rgba(255,103,134,0.05), rgba(78,205,196,0.05));
-}
-.carousel-wrapper {
-    margin-top: 3rem;
-    overflow: hidden;
-    width: 100%;
-}
-.carousel-container {
-    display: flex;
-    gap: 3rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 2rem 0;
-    scrollbar-width: none;
-}
-.carousel-container::-webkit-scrollbar {
-    display: none;
-}
-.screenshot-card {
-    flex: 0 0 auto;
-    text-align: center;
-    min-width: 320px;
-}
-.phone-mockup {
-    width: 280px;
-    height: 560px;
-    background: var(--off-black);
-    border-radius: 40px;
-    padding: 12px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-    margin: 0 auto 1.5rem;
-    transition: transform 0.3s ease;
-    position: relative;
-}
-.phone-mockup:hover {
-    transform: translateY(-10px);
-}
-.phone-mockup::before {
-    content: '';
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 25px;
-    background: var(--black);
-    border-radius: 0 0 20px 20px;
-    z-index: 10;
-}
-.phone-screen {
-    width: 100%;
-    height: 100%;
-    border-radius: 32px;
-    overflow: hidden;
-    background: linear-gradient(135deg, rgba(255, 103, 134, 0.1), rgba(78, 205, 196, 0.1));
+.btn-primary { background: var(--primary-pink); color: var(--white); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255,103,134,0.4); }
+.btn-secondary { background: transparent; color: var(--white); border: 2px solid var(--primary-pink); }
+.btn-secondary:hover { background: var(--primary-pink); transform: translateY(-3px); }
+
+/* STORE BUTTONS */
+.store-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+.store-btn {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-}
-.screenshot-info h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    color: var(--primary-pink);
-    margin-bottom: 1rem;
-}
-.screenshot-info p {
-    line-height: 1.7;
-    opacity: 0.9;
-    max-width: 300px;
-    margin: 0 auto;
-}
-.carousel-nav {
-    text-align: center;
-    margin-top: 2rem;
-}
-.carousel-nav button {
-    background: var(--off-black);
-    border: 2px solid var(--primary-pink);
-    color: var(--primary-pink);
-    padding: 0.8rem 2rem;
-    border-radius: 50px;
-    margin: 0 0.5rem;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    font-family: 'DM Sans', sans-serif;
-}
-.carousel-nav button:hover {
-    background: var(--primary-pink);
+    gap: 0.6rem;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.45);
     color: white;
-    transform: translateY(-2px);
-}
-.steps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    margin-top: 3rem;
-}
-.step {
-    text-align: center;
-}
-.step-number {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, var(--primary-pink), #ff8aa3);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0 auto 1.5rem;
-    box-shadow: 0 10px 30px rgba(255, 103, 134, 0.3);
-}
-.step h3 {
-    color: var(--primary-pink);
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-}
-.cta-section {
-    text-align: center;
-    padding: 5rem 5%;
-    background: linear-gradient(135deg, rgba(255,103,134,0.1), rgba(78,205,196,0.1));
-    border-radius: 20px;
-}
-footer {
-    background: var(--off-black);
-    padding: 4rem 5% 2rem;
-    border-top: 2px solid rgba(255, 103, 134, 0.2);
-}
-.footer-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    margin-bottom: 3rem;
-}
-.footer-section h3 {
-    color: var(--primary-pink);
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-.footer-section ul {
-    list-style: none;
-}
-.footer-section li {
-    margin-bottom: 0.8rem;
-}
-.footer-section a {
-    color: var(--white);
     text-decoration: none;
-    opacity: 0.8;
+    padding: 0.65rem 1.2rem;
+    border-radius: 12px;
+    font-weight: 600;
     transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
 }
-.footer-section a:hover {
-    opacity: 1;
-    color: var(--primary-pink);
+.store-btn:hover {
+    background: var(--primary-pink);
+    border-color: var(--primary-pink);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255,103,134,0.4);
 }
-.footer-bottom {
-    text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 103, 134, 0.2);
-    opacity: 0.7;
-}
+.store-btn-text { display: flex; flex-direction: column; line-height: 1.2; }
+.store-btn-label { font-size: 0.6rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
+.store-btn-name { font-size: 0.95rem; font-weight: 700; }
+
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* SECTIONS */
+section { padding: 5rem 5%; max-width: 1400px; margin: 0 auto; }
+.section-title { text-align: center; font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem,5vw,4rem); color: var(--primary-pink); margin-bottom: 1rem; letter-spacing: 2px; }
+.section-subtitle { text-align: center; font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.9; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+
+.stats-section { background: linear-gradient(135deg,rgba(255,103,134,0.05),rgba(78,205,196,0.05)); padding: 4rem 5%; margin: 3rem 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+.stat-card { text-align: center; padding: 2rem; }
+.stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: var(--primary-pink); text-shadow: 0 0 20px rgba(255,103,134,0.4); margin-bottom: 0.5rem; }
+.stat-label { font-size: 1.1rem; opacity: 0.9; line-height: 1.5; }
+
+.problem-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 2rem; margin-top: 2rem; }
+.problem-card { background: var(--off-black); border: 2px solid var(--primary-pink); border-radius: 20px; padding: 2.5rem; transition: all 0.3s ease; }
+.problem-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255,103,134,0.3); }
+.problem-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary-pink); }
+.problem-card p { line-height: 1.7; opacity: 0.9; }
+.waste-impact { background: var(--off-black); border-radius: 20px; padding: 3rem; margin: 3rem 0; }
+.waste-impact h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--primary-pink); margin-bottom: 2rem; text-align: center; }
+.waste-reasons { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+.waste-reason { padding: 1.5rem; background: rgba(255,103,134,0.05); border-radius: 10px; border-left: 4px solid var(--primary-pink); }
+.waste-callout { text-align: center; font-size: 1.3rem; font-weight: 600; color: var(--primary-pink); margin-top: 2rem; padding: 1.5rem; background: rgba(255,103,134,0.1); border-radius: 10px; }
+
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 2.5rem; margin-top: 3rem; }
+.feature-card { background: var(--off-black); border: 2px solid rgba(255,103,134,0.3); border-radius: 20px; padding: 2.5rem; text-align: center; transition: all 0.3s ease; }
+.feature-card:hover { border-color: var(--primary-pink); transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255,103,134,0.3); }
+.feature-icon { font-size: 3rem; margin-bottom: 1.5rem; }
+.feature-card h3 { color: var(--primary-pink); font-size: 1.4rem; margin-bottom: 1rem; }
+
+.comparison-section { background: var(--off-black); border-radius: 20px; padding: 4rem 3rem; max-width: 1200px; margin: 4rem auto; width: 90%; }
+.comparison-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 2rem; margin-top: 3rem; }
+.comparison-item { padding: 2rem; background: rgba(255,103,134,0.05); border-radius: 15px; }
+.comparison-item h4 { font-size: 1.3rem; color: var(--primary-pink); margin-bottom: 1rem; }
+.comparison-list { list-style: none; }
+.comparison-list li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; opacity: 0.8; }
+.comparison-list li::before { content: '✗'; position: absolute; left: 0; color: #ff4444; font-weight: bold; }
+.comparison-advantage { margin-top: 1rem; padding-left: 1.5rem; color: var(--teal); font-weight: 600; position: relative; }
+.comparison-advantage::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: bold; }
+
+.app-showcase { padding: 6rem 5%; background: linear-gradient(135deg,rgba(255,103,134,0.05),rgba(78,205,196,0.05)); }
+.carousel-wrapper { margin-top: 3rem; overflow: hidden; width: 100%; }
+.carousel-container { display: flex; gap: 3rem; overflow-x: auto; scroll-behavior: smooth; padding: 2rem 0; scrollbar-width: none; }
+.carousel-container::-webkit-scrollbar { display: none; }
+.screenshot-card { flex: 0 0 auto; text-align: center; min-width: 320px; }
+.phone-mockup { width: 280px; height: 560px; background: var(--off-black); border-radius: 40px; padding: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); margin: 0 auto 1.5rem; transition: transform 0.3s ease; position: relative; }
+.phone-mockup:hover { transform: translateY(-10px); }
+.phone-mockup::before { content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 100px; height: 25px; background: var(--black); border-radius: 0 0 20px 20px; z-index: 10; }
+.phone-screen { width: 100%; height: 100%; border-radius: 32px; overflow: hidden; background: linear-gradient(135deg,rgba(255,103,134,0.1),rgba(78,205,196,0.1)); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+.screenshot-info h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--primary-pink); margin-bottom: 1rem; }
+.screenshot-info p { line-height: 1.7; opacity: 0.9; max-width: 300px; margin: 0 auto; }
+.carousel-nav { text-align: center; margin-top: 2rem; }
+.carousel-nav button { background: var(--off-black); border: 2px solid var(--primary-pink); color: var(--primary-pink); padding: 0.8rem 2rem; border-radius: 50px; margin: 0 0.5rem; cursor: pointer; font-weight: 600; transition: all 0.3s ease; font-family: 'DM Sans', sans-serif; }
+.carousel-nav button:hover { background: var(--primary-pink); color: white; transform: translateY(-2px); }
+
+.steps-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 3rem; margin-top: 3rem; }
+.step { text-align: center; }
+.step-number { width: 80px; height: 80px; background: linear-gradient(135deg,var(--primary-pink),#ff8aa3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 700; margin: 0 auto 1.5rem; box-shadow: 0 10px 30px rgba(255,103,134,0.3); }
+.step h3 { color: var(--primary-pink); font-size: 1.4rem; margin-bottom: 1rem; }
+
+.cta-section { text-align: center; padding: 5rem 5%; background: linear-gradient(135deg,rgba(255,103,134,0.1),rgba(78,205,196,0.1)); border-radius: 20px; }
+
+footer { background: var(--off-black); padding: 4rem 5% 2rem; border-top: 2px solid rgba(255,103,134,0.2); }
+.footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 3rem; margin-bottom: 3rem; }
+.footer-section h3 { color: var(--primary-pink); font-size: 1.5rem; margin-bottom: 1.5rem; }
+.footer-section ul { list-style: none; }
+.footer-section li { margin-bottom: 0.8rem; }
+.footer-section a { color: var(--white); text-decoration: none; opacity: 0.8; transition: all 0.3s ease; }
+.footer-section a:hover { opacity: 1; color: var(--primary-pink); }
+.footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,103,134,0.2); opacity: 0.7; }
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    header {
-        padding: 1rem 5%;
-    }
-    .logo {
-        font-size: 2rem;
-    }
-    .menu-toggle { 
-        display: flex;
-        z-index: 1001;
-    }
-    nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(10, 10, 10, 0.98);
-        flex-direction: column;
-        padding: 2rem;
-        gap: 1.5rem;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
+    header { padding: 1rem 5%; }
+    .logo { font-size: 2rem; }
+    .menu-toggle { display: flex; z-index: 1001; }
+    nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; padding: 2rem; gap: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     nav.active { display: flex; }
-    nav a {
-        font-size: 1.1rem;
-        padding: 0.5rem 0;
-    }
-    .hero {
-        padding: 6rem 5% 3rem;
-        min-height: auto;
-    }
-    .hero h1 {
-        font-size: clamp(2rem, 10vw, 3.5rem);
-        margin-bottom: 1rem;
-    }
-    .hero p {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-    }
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-    .btn-primary, .btn-secondary {
-        width: 100%;
-        text-align: center;
-        padding: 1rem 2rem;
-        font-size: 1rem;
-    }
-    .stats-section {
-        padding: 3rem 5%;
-        margin: 2rem 0;
-    }
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    .stat-card {
-        padding: 1.5rem;
-    }
-    .stat-number {
-        font-size: 3rem;
-    }
-    .stat-label {
-        font-size: 1rem;
-    }
-    section {
-        padding: 3rem 5%;
-    }
-    .section-title {
-        font-size: clamp(2rem, 8vw, 3rem);
-        margin-bottom: 0.5rem;
-    }
-    .section-subtitle {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-        padding: 0 1rem;
-    }
-    .problem-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    .problem-card {
-        padding: 2rem;
-    }
-    .problem-card h3 {
-        font-size: 1.3rem;
-    }
-    .waste-impact {
-        padding: 2rem;
-        margin: 2rem 0;
-    }
-    .waste-impact h3 {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-    }
-    .waste-reasons {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    .waste-reason {
-        padding: 1rem;
-    }
-    .waste-callout {
-        font-size: 1.1rem;
-        padding: 1rem;
-    }
-    .features-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-    .feature-card {
-        padding: 2rem;
-    }
-    .feature-icon {
-        font-size: 2.5rem;
-    }
-    .feature-card h3 {
-        font-size: 1.2rem;
-    }
-    .comparison-section {
-        padding: 3rem 1.5rem;
-        margin: 3rem auto; /* ← fix: keep auto for centering */
-    }
-    .comparison-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    .comparison-item {
-        padding: 1.5rem;
-    }
-    .comparison-item h4 {
-        font-size: 1.2rem;
-    }
-    .app-showcase {
-        padding: 3rem 5%;
-    }
-    .carousel-wrapper {
-        margin-top: 2rem;
-    }
-    .screenshot-card {
-        min-width: 280px;
-    }
-    .phone-mockup {
-        width: 240px;
-        height: 480px;
-    }
-    .screenshot-info h3 {
-        font-size: 1.5rem;
-    }
-    .screenshot-info p {
-        font-size: 0.9rem;
-    }
-    .carousel-nav button {
-        padding: 0.7rem 1.5rem;
-        font-size: 0.9rem;
-    }
-    .steps-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-    .step-number {
-        width: 70px;
-        height: 70px;
-        font-size: 1.8rem;
-    }
-    .step h3 {
-        font-size: 1.2rem;
-    }
-    .step p {
-        font-size: 0.95rem;
-    }
-    .cta-section {
-        padding: 3rem 5%;
-        margin: 3rem 0;
-    }
-    .cta-section .btn-primary {
-        font-size: 1rem;
-        padding: 1.2rem 2.5rem;
-        width: 100%;
-    }
-    footer {
-        padding: 3rem 5% 1.5rem;
-    }
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        margin-bottom: 2rem;
-    }
-    .footer-section {
-        text-align: center;
-    }
-    .footer-section h3 {
-        font-size: 1.3rem;
-    }
+    nav a { font-size: 1.1rem; padding: 0.5rem 0; }
+    .hero { padding: 6rem 5% 3rem; min-height: 100vh; }
+    .hero-content { padding: 2rem; }
+    .hero h1 { font-size: clamp(2rem,10vw,3.5rem); margin-bottom: 1rem; }
+    .hero p { font-size: 1rem; margin-bottom: 1.5rem; }
+    .hero-buttons { flex-direction: column; }
+    .btn-primary, .btn-secondary { width: 100%; text-align: center; padding: 1rem 2rem; font-size: 1rem; }
+    .store-buttons { flex-direction: column; }
+    .store-btn { width: 100%; justify-content: center; }
+    .stats-section { padding: 3rem 5%; margin: 2rem 0; }
+    .stats-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .stat-card { padding: 1.5rem; }
+    .stat-number { font-size: 3rem; }
+    section { padding: 3rem 5%; }
+    .section-title { font-size: clamp(2rem,8vw,3rem); margin-bottom: 0.5rem; }
+    .section-subtitle { font-size: 1rem; margin-bottom: 2rem; padding: 0 1rem; }
+    .problem-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .problem-card { padding: 2rem; }
+    .waste-impact { padding: 2rem; margin: 2rem 0; }
+    .waste-impact h3 { font-size: 2rem; margin-bottom: 1.5rem; }
+    .waste-reasons { grid-template-columns: 1fr; gap: 1rem; }
+    .features-grid { grid-template-columns: 1fr; gap: 2rem; margin-top: 2rem; }
+    .feature-card { padding: 2rem; }
+    .comparison-section { padding: 3rem 1.5rem; margin: 3rem auto; }
+    .comparison-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .app-showcase { padding: 3rem 5%; }
+    .screenshot-card { min-width: 280px; }
+    .phone-mockup { width: 240px; height: 480px; }
+    .steps-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .cta-section { padding: 3rem 5%; margin: 3rem 0; }
+    footer { padding: 3rem 5% 1.5rem; }
+    .footer-content { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
+    .footer-section { text-align: center; }
 }
 @media (max-width: 480px) {
-    .hero h1 {
-        font-size: 2rem;
-    }
-    .hero p {
-        font-size: 0.95rem;
-    }
-    .stat-number {
-        font-size: 2.5rem;
-    }
-    .section-title {
-        font-size: 2rem;
-    }
-    .problem-card, .feature-card, .comparison-item {
-        padding: 1.5rem;
-    }
-    .waste-impact {
-        padding: 1.5rem;
-    }
-    .phone-mockup {
-        width: 220px;
-        height: 440px;
-    }
-    .screenshot-card {
-        min-width: 240px;
-    }
-    .carousel-nav {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    .carousel-nav button {
-        width: 100%;
-    }
+    .hero h1 { font-size: 2rem; }
+    .stat-number { font-size: 2.5rem; }
+    .section-title { font-size: 2rem; }
+    .phone-mockup { width: 220px; height: 440px; }
+    .screenshot-card { min-width: 240px; }
+    .carousel-nav { display: flex; flex-direction: column; gap: 0.5rem; }
+    .carousel-nav button { width: 100%; }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .problem-grid, .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .comparison-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .stats-grid { grid-template-columns: repeat(2,1fr); }
+    .problem-grid, .features-grid { grid-template-columns: repeat(2,1fr); }
+    .comparison-grid { grid-template-columns: repeat(2,1fr); }
 }
 </style>
 </head>
 <body>
 <div class="bg-pattern"></div>
+
 <header>
-<div class="logo">STUNIFY</div>
-<div class="menu-toggle" onclick="document.getElementById('mainNav').classList.toggle('active')">
-<span></span><span></span><span></span>
-</div>
-<nav id="mainNav">
-<a href="#problem">Problem</a>
-<a href="#solution">Solution</a>
-<a href="#app-showcase">App Preview</a>
-<a href="#how-it-works">How It Works</a>
-<a href="#contact">Contact</a>
-<a href="#" class="cta-button">Join Waitlist</a>
-</nav>
+    <div class="logo">STUNIFY</div>
+    <div class="menu-toggle" onclick="document.getElementById('mainNav').classList.toggle('active')">
+        <span></span><span></span><span></span>
+    </div>
+    <nav id="mainNav">
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#app-showcase">App Preview</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#contact">Contact</a>
+        <a href="#" class="cta-button">Join Waitlist</a>
+    </nav>
 </header>
 
 <section class="hero">
-<div class="hero-content">
-<h1>Dear students,<br>Find what you need<br><span>Share What You Have.</span></h1>
-<p>A safe, campus-verified platform where students can give away, borrow, swap, or sell items — from kitchenware to textbooks to furniture — instead of throwing them away.</p>
-<div class="hero-buttons">
-<a href="#solution" class="btn-primary">Learn More</a>
-<a href="#app-showcase" class="btn-secondary">View App</a>
-</div>
-</div>
+    <div class="hero-content">
+        <h1>Dear students,<br>Find what you need<br><span>Share What You Have.</span></h1>
+        <p>A safe, campus-verified platform where students can give away, borrow, swap, or sell items — from kitchenware to textbooks to furniture — instead of throwing them away.</p>
+        <div class="hero-buttons">
+            <a href="#solution" class="btn-primary">Learn More</a>
+            <a href="#app-showcase" class="btn-secondary">View App</a>
+        </div>
+        <div class="store-buttons">
+            <a href="YOUR_APP_STORE_LINK" target="_blank" class="store-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                <div class="store-btn-text">
+                    <span class="store-btn-label">Download on the</span>
+                    <span class="store-btn-name">App Store</span>
+                </div>
+            </a>
+            <a href="YOUR_PLAY_STORE_LINK" target="_blank" class="store-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M3.18 23.76c.3.17.64.22.99.14l12.12-6.98-2.54-2.54-10.57 9.38zm-1.76-20.7C1.16 3.33 1 3.66 1 4.1v15.8c0 .44.16.77.43 1.01l.08.07 8.85-8.85v-.2L1.5 3.13l-.08.07-.08-.14zM20.49 10.7l-2.55-1.47-2.84 2.84 2.84 2.84 2.58-1.49c.73-.42.73-1.31-.03-1.72zM3.18.24L15.3 7.22l-2.54 2.54L2.19.38C2.51.17 2.9.1 3.18.24z"/></svg>
+                <div class="store-btn-text">
+                    <span class="store-btn-label">Get it on</span>
+                    <span class="store-btn-name">Google Play</span>
+                </div>
+            </a>
+        </div>
+    </div>
 </section>
 
 <div class="stats-section">
-<div class="stats-grid">
-<div class="stat-card">
-<div class="stat-number">17%</div>
-<div class="stat-label">Increase in student living costs</div>
-</div>
-<div class="stat-card">
-<div class="stat-number">41%</div>
-<div class="stat-label">Students considered dropping out due to money worries</div>
-</div>
-<div class="stat-card">
-<div class="stat-number">691k</div>
-<div class="stat-label">Tonnes of waste generated annually by UK universities</div>
-</div>
-</div>
+    <div class="stats-grid">
+        <div class="stat-card"><div class="stat-number">17%</div><div class="stat-label">Increase in student living costs</div></div>
+        <div class="stat-card"><div class="stat-number">41%</div><div class="stat-label">Students considered dropping out due to money worries</div></div>
+        <div class="stat-card"><div class="stat-number">691k</div><div class="stat-label">Tonnes of waste generated annually by UK universities</div></div>
+    </div>
 </div>
 
 <section id="problem">
-<h2 class="section-title">The Problem</h2>
-<p class="section-subtitle">Students face rising living costs and mounting waste. The financial and environmental pressure has never been greater.</p>
-<div class="problem-grid">
-<div class="problem-card">
-<h3>📈 17% Cost Increase</h3>
-<p>Average student monthly living costs increased by 17%, up from £924 to £1,078. Financial pressure is at an all-time high.</p>
-</div>
-<div class="problem-card">
-<h3>💔 41% Consider Dropping Out</h3>
-<p>41% of students considered dropping out due to money worries. 58% report their maintenance loan doesn't cover living costs.</p>
-</div>
-<div class="problem-card">
-<h3>♻️ 691k Tonnes Waste</h3>
-<p>UK higher education generates 691,091 tonnes of waste annually. UCL alone discards 38 tonnes during move-out periods.</p>
-</div>
-</div>
-
-<div class="waste-impact">
-<h3>But at the same time, a huge amount of waste happens...</h3>
-<p style="text-align:center;margin-bottom:2rem;opacity:0.9">The waste is NOT because students are careless — it's because the university lifestyle forces waste:</p>
-<div class="waste-reasons">
-<div class="waste-reason"><p>Students constantly move accommodations instantaneously</p></div>
-<div class="waste-reason"><p>They can't carry large or heavy items home</p></div>
-<div class="waste-reason"><p>They can't store items over summer</p></div>
-<div class="waste-reason"><p>Many items are required for short-term use only</p></div>
-<div class="waste-reason"><p>Leases end abruptly, forcing quick disposal</p></div>
-</div>
-<div class="waste-callout">This is not a student problem. It is a system problem.</div>
-</div>
+    <h2 class="section-title">The Problem</h2>
+    <p class="section-subtitle">Students face rising living costs and mounting waste. The financial and environmental pressure has never been greater.</p>
+    <div class="problem-grid">
+        <div class="problem-card"><h3>📈 17% Cost Increase</h3><p>Average student monthly living costs increased by 17%, up from £924 to £1,078. Financial pressure is at an all-time high.</p></div>
+        <div class="problem-card"><h3>💔 41% Consider Dropping Out</h3><p>41% of students considered dropping out due to money worries. 58% report their maintenance loan doesn't cover living costs.</p></div>
+        <div class="problem-card"><h3>♻️ 691k Tonnes Waste</h3><p>UK higher education generates 691,091 tonnes of waste annually. UCL alone discards 38 tonnes during move-out periods.</p></div>
+    </div>
+    <div class="waste-impact">
+        <h3>But at the same time, a huge amount of waste happens...</h3>
+        <p style="text-align:center;margin-bottom:2rem;opacity:0.9">The waste is NOT because students are careless — it's because the university lifestyle forces waste:</p>
+        <div class="waste-reasons">
+            <div class="waste-reason"><p>Students constantly move accommodations instantaneously</p></div>
+            <div class="waste-reason"><p>They can't carry large or heavy items home</p></div>
+            <div class="waste-reason"><p>They can't store items over summer</p></div>
+            <div class="waste-reason"><p>Many items are required for short-term use only</p></div>
+            <div class="waste-reason"><p>Leases end abruptly, forcing quick disposal</p></div>
+        </div>
+        <div class="waste-callout">This is not a student problem. It is a system problem.</div>
+    </div>
 </section>
 
 <section id="solution">
-<h2 class="section-title">The Solution: Stunify</h2>
-<p class="section-subtitle">A safe, campus-verified platform where students can give away, borrow, swap, or sell items — instead of throwing them away.</p>
-<div class="features-grid">
-<div class="feature-card">
-<div class="feature-icon">🎓</div>
-<h3>Student Verification</h3>
-<p>Sign in with university email to verify student status. Safe and trusted community.</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">🚀</div>
-<h3>Instant Notifications</h3>
-<p>Donate or request items and notify all students on the platform instantly.</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">🤖</div>
-<h3>AI Moderation</h3>
-<p>Integrated AI moderation to prevent profanity, misuse, and prohibited actions.</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">⏱️</div>
-<h3>Quick Listing</h3>
-<p>List items in under 30 seconds. Simple, fast, and efficient.</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">🏆</div>
-<h3>Rewards System</h3>
-<p>Earn points, rewards, or recognition for sustainable actions.</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">🌍</div>
-<h3>Campus-Specific</h3>
-<p>Hyper-local platform designed specifically for university communities.</p>
-</div>
-</div>
+    <h2 class="section-title">The Solution: Stunify</h2>
+    <p class="section-subtitle">A safe, campus-verified platform where students can give away, borrow, swap, or sell items — instead of throwing them away.</p>
+    <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon">🎓</div><h3>Student Verification</h3><p>Sign in with university email to verify student status. Safe and trusted community.</p></div>
+        <div class="feature-card"><div class="feature-icon">🚀</div><h3>Instant Notifications</h3><p>Donate or request items and notify all students on the platform instantly.</p></div>
+        <div class="feature-card"><div class="feature-icon">🤖</div><h3>AI Moderation</h3><p>Integrated AI moderation to prevent profanity, misuse, and prohibited actions.</p></div>
+        <div class="feature-card"><div class="feature-icon">⏱️</div><h3>Quick Listing</h3><p>List items in under 30 seconds. Simple, fast, and efficient.</p></div>
+        <div class="feature-card"><div class="feature-icon">🏆</div><h3>Rewards System</h3><p>Earn points, rewards, or recognition for sustainable actions.</p></div>
+        <div class="feature-card"><div class="feature-icon">🌍</div><h3>Campus-Specific</h3><p>Hyper-local platform designed specifically for university communities.</p></div>
+    </div>
 </section>
 
 <section class="comparison-section">
-<h2 class="section-title">Why Stunify?</h2>
-<p class="section-subtitle">Unlike existing solutions, Stunify is built specifically for students</p>
-<div class="comparison-grid">
-<div class="comparison-item">
-<h4>WhatsApp Groups</h4>
-<ul class="comparison-list">
-<li>Messy and unstructured</li>
-<li>Not safe</li>
-<li>No campus filtering</li>
-</ul>
-<p class="comparison-advantage">Stunify: Verified, structured, safe</p>
-</div>
-<div class="comparison-item">
-<h4>Facebook Marketplace</h4>
-<ul class="comparison-list">
-<li>Mixed community</li>
-<li>Not student-specific</li>
-<li>Profanity issues</li>
-</ul>
-<p class="comparison-advantage">Stunify: Fully student-only ecosystem</p>
-</div>
-<div class="comparison-item">
-<h4>University Swap Events</h4>
-<ul class="comparison-list">
-<li>Happen once/year</li>
-<li>Limited availability</li>
-</ul>
-<p class="comparison-advantage">Stunify: Always on, year-round</p>
-</div>
-<div class="comparison-item">
-<h4>Freecycle / Olio</h4>
-<ul class="comparison-list">
-<li>Not tailored to students</li>
-<li>General community</li>
-</ul>
-<p class="comparison-advantage">Stunify: Hyper-local, campus-specific</p>
-</div>
-</div>
+    <h2 class="section-title">Why Stunify?</h2>
+    <p class="section-subtitle">Unlike existing solutions, Stunify is built specifically for students</p>
+    <div class="comparison-grid">
+        <div class="comparison-item"><h4>WhatsApp Groups</h4><ul class="comparison-list"><li>Messy and unstructured</li><li>Not safe</li><li>No campus filtering</li></ul><p class="comparison-advantage">Stunify: Verified, structured, safe</p></div>
+        <div class="comparison-item"><h4>Facebook Marketplace</h4><ul class="comparison-list"><li>Mixed community</li><li>Not student-specific</li><li>Profanity issues</li></ul><p class="comparison-advantage">Stunify: Fully student-only ecosystem</p></div>
+        <div class="comparison-item"><h4>University Swap Events</h4><ul class="comparison-list"><li>Happen once/year</li><li>Limited availability</li></ul><p class="comparison-advantage">Stunify: Always on, year-round</p></div>
+        <div class="comparison-item"><h4>Freecycle / Olio</h4><ul class="comparison-list"><li>Not tailored to students</li><li>General community</li></ul><p class="comparison-advantage">Stunify: Hyper-local, campus-specific</p></div>
+    </div>
 </section>
 
 <section id="app-showcase" class="app-showcase">
-<h2 class="section-title">See Stunify in Action</h2>
-<p class="section-subtitle">Swipe through the app screens to explore how Stunify makes student sharing simple, safe, and rewarding.</p>
-<div class="carousel-wrapper">
-<div class="carousel-container" id="carousel">
-<div class="screenshot-card">
-<div class="phone-mockup"><div class="phone-screen">📱</div></div>
-<div class="screenshot-info">
-<h3>Welcome Screen</h3>
-<p>Sign up with your university email for instant verification. Join a trusted community of verified students.</p>
-</div>
-</div>
-<div class="screenshot-card">
-<div class="phone-mockup"><div class="phone-screen">🔍</div></div>
-<div class="screenshot-info">
-<h3>Search & Browse</h3>
-<p>Filter by category, location, and availability. Find exactly what you need from verified students.</p>
-</div>
-</div>
-<div class="screenshot-card">
-<div class="phone-mockup"><div class="phone-screen">🎁</div></div>
-<div class="screenshot-info">
-<h3>Donate Items</h3>
-<p>List items you no longer need in under 30 seconds. Add photos and help fellow students save money.</p>
-</div>
-</div>
-<div class="screenshot-card">
-<div class="phone-mockup"><div class="phone-screen">📝</div></div>
-<div class="screenshot-info">
-<h3>Request Items</h3>
-<p>Looking for something specific? Create a request and students respond instantly.</p>
-</div>
-</div>
-<div class="screenshot-card">
-<div class="phone-mockup"><div class="phone-screen">💬</div></div>
-<div class="screenshot-info">
-<h3>Safe Messaging</h3>
-<p>Built-in chat to arrange pickup details safely. All communication stays in-app.</p>
-</div>
-</div>
-<div class="screenshot-card">
-<div class="phone-mockup"><div class="phone-screen">👥</div></div>
-<div class="screenshot-info">
-<h3>Community Feed</h3>
-<p>Share study tips, cleaning hacks, and life advice. Connect with fellow students.</p>
-</div>
-</div>
-</div>
-<div class="carousel-nav">
-<button onclick="document.getElementById('carousel').scrollBy({left:-350,behavior:'smooth'})">← Previous</button>
-<button onclick="document.getElementById('carousel').scrollBy({left:350,behavior:'smooth'})">Next →</button>
-</div>
-</div>
+    <h2 class="section-title">See Stunify in Action</h2>
+    <p class="section-subtitle">Swipe through the app screens to explore how Stunify makes student sharing simple, safe, and rewarding.</p>
+    <div class="carousel-wrapper">
+        <div class="carousel-container" id="carousel">
+            <div class="screenshot-card"><div class="phone-mockup"><div class="phone-screen">📱</div></div><div class="screenshot-info"><h3>Welcome Screen</h3><p>Sign up with your university email for instant verification.</p></div></div>
+            <div class="screenshot-card"><div class="phone-mockup"><div class="phone-screen">🔍</div></div><div class="screenshot-info"><h3>Search & Browse</h3><p>Filter by category, location, and availability.</p></div></div>
+            <div class="screenshot-card"><div class="phone-mockup"><div class="phone-screen">🎁</div></div><div class="screenshot-info"><h3>Donate Items</h3><p>List items you no longer need in under 30 seconds.</p></div></div>
+            <div class="screenshot-card"><div class="phone-mockup"><div class="phone-screen">📝</div></div><div class="screenshot-info"><h3>Request Items</h3><p>Looking for something specific? Create a request instantly.</p></div></div>
+            <div class="screenshot-card"><div class="phone-mockup"><div class="phone-screen">💬</div></div><div class="screenshot-info"><h3>Safe Messaging</h3><p>Built-in chat to arrange pickup details safely.</p></div></div>
+            <div class="screenshot-card"><div class="phone-mockup"><div class="phone-screen">👥</div></div><div class="screenshot-info"><h3>Community Feed</h3><p>Share tips and advice. Connect with fellow students.</p></div></div>
+        </div>
+        <div class="carousel-nav">
+            <button onclick="document.getElementById('carousel').scrollBy({left:-350,behavior:'smooth'})">← Previous</button>
+            <button onclick="document.getElementById('carousel').scrollBy({left:350,behavior:'smooth'})">Next →</button>
+        </div>
+    </div>
 </section>
 
 <section id="how-it-works">
-<h2 class="section-title">How It Works</h2>
-<p class="section-subtitle">Simple, Fast, Student-First</p>
-<div class="steps-grid">
-<div class="step">
-<div class="step-number">1</div>
-<h3>Verify Your Status</h3>
-<p>Sign in with a university email to verify student status and join your campus community.</p>
-</div>
-<div class="step">
-<div class="step-number">2</div>
-<h3>Browse or List</h3>
-<p>Donate or request items and notify all students on the platform instantly.</p>
-</div>
-<div class="step">
-<div class="step-number">3</div>
-<h3>Connect Safely</h3>
-<p>Integrated AI moderation prevents profanity and misuse. Connect with verified students only.</p>
-</div>
-<div class="step">
-<div class="step-number">4</div>
-<h3>Earn Rewards</h3>
-<p>Earn points, rewards, or recognition for sustainable actions. Build a better campus community.</p>
-</div>
-</div>
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">Simple, Fast, Student-First</p>
+    <div class="steps-grid">
+        <div class="step"><div class="step-number">1</div><h3>Verify Your Status</h3><p>Sign in with a university email to verify student status and join your campus community.</p></div>
+        <div class="step"><div class="step-number">2</div><h3>Browse or List</h3><p>Donate or request items and notify all students on the platform instantly.</p></div>
+        <div class="step"><div class="step-number">3</div><h3>Connect Safely</h3><p>Integrated AI moderation prevents profanity and misuse. Connect with verified students only.</p></div>
+        <div class="step"><div class="step-number">4</div><h3>Earn Rewards</h3><p>Earn points, rewards, or recognition for sustainable actions. Build a better campus community.</p></div>
+    </div>
 </section>
 
 <section class="cta-section">
-<h2 class="section-title">Ready to Join the Movement?</h2>
-<p class="section-subtitle">Be part of the solution. Join thousands of students building a sustainable sharing economy.</p>
-<a href="#" class="btn-primary">Join Waitlist Now</a>
+    <h2 class="section-title">Ready to Join the Movement?</h2>
+    <p class="section-subtitle">Be part of the solution. Join thousands of students building a sustainable sharing economy.</p>
+    <a href="#" class="btn-primary">Join Waitlist Now</a>
 </section>
 
 <footer id="contact">
-<div class="footer-content">
-<div class="footer-section">
-<h3>Stunify</h3>
-<p style="opacity:0.8;line-height:1.7">Building a sustainable sharing economy for students across the UK. Share smarter, live better.</p>
-</div>
-<div class="footer-section">
-<h3>Quick Links</h3>
-<ul>
-<li><a href="#problem">The Problem</a></li>
-<li><a href="#solution">Our Solution</a></li>
-<li><a href="#app-showcase">App Preview</a></li>
-<li><a href="#how-it-works">How It Works</a></li>
-</ul>
-</div>
-<div class="footer-section">
-<h3>Resources</h3>
-<ul>
-<li><a href="https://great01-cyber.github.io/stunifyprivacy-policy/">Privacy Policy</a></li>
-<li><a href="#">Terms of Service</a></li>
-<li><a href="#">Contact Us</a></li>
-</ul>
-</div>
-<div class="footer-section">
-<h3>Contact</h3>
-<p style="opacity:0.8;line-height:1.7">📧 info@stunify.co.uk<br>📍 Sheffield, United Kingdom<br>🌐 <a href="https://great01-cyber.github.io/stunifyapp/">www.stunify.co.uk</a></p>
-</div>
-</div>
-<div class="footer-bottom">
-<p>&copy; 2025 Stunify. All rights reserved. Built with ❤️ for students.</p>
-</div>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Stunify</h3>
+            <p style="opacity:0.8;line-height:1.7">Building a sustainable sharing economy for students across the UK. Share smarter, live better.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#problem">The Problem</a></li>
+                <li><a href="#solution">Our Solution</a></li>
+                <li><a href="#app-showcase">App Preview</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="https://great01-cyber.github.io/stunifyprivacy-policy/">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p style="opacity:0.8;line-height:1.7">📧 info@stunify.co.uk<br>📍 Sheffield, United Kingdom<br>🌐 <a href="https://great01-cyber.github.io/stunifyapp/">www.stunify.co.uk</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Stunify. All rights reserved. Built with ❤️ for students.</p>
+    </div>
 </footer>
-    <div class="floating-download">
-    <p>Download the App</p>
-    <a href="YOUR_APP_STORE_LINK" target="_blank" class="store-badge">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        App Store
-    </a>
-    <a href="YOUR_PLAY_STORE_LINK" target="_blank" class="store-badge">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M3.18 23.76c.3.17.64.22.99.14l12.12-6.98-2.54-2.54-10.57 9.38zm-1.76-20.7C1.16 3.33 1 3.66 1 4.1v15.8c0 .44.16.77.43 1.01l.08.07 8.85-8.85v-.2L1.5 3.13l-.08.07-.08-.14zM20.49 10.7l-2.55-1.47-2.84 2.84 2.84 2.84 2.58-1.49c.73-.42.73-1.31-.03-1.72zM3.18.24L15.3 7.22l-2.54 2.54L2.19.38C2.51.17 2.9.1 3.18.24z"/></svg>
-        Google Play
-    </a>
-</div>
+
 </body>
 </html>
