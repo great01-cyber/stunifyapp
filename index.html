@@ -324,14 +324,18 @@ section {
     background: var(--off-black);
     border-radius: 20px;
     padding: 4rem 3rem;
-    margin: 4rem 0;
-    text-align: center;
+    
+    /* THE FIX: */
+    max-width: 1200px;      /* Matches your hero and stats width for consistency */
+    margin: 4rem auto;      /* The 'auto' centers the entire container horizontally */
+    width: 90%;
 }
 .comparison-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
+    justify-content: center;
 }
 .comparison-item {
     padding: 2rem;
