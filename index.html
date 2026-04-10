@@ -54,6 +54,64 @@ header {
     border-bottom: 1px solid rgba(255, 103, 134, 0.1);
     z-index: 1000;
 }
+.floating-download {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--off-black);
+    border: 2px solid var(--primary-pink);
+    border-radius: 16px;
+    padding: 1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    z-index: 999;
+    box-shadow: 0 10px 40px rgba(255, 103, 134, 0.3);
+}
+
+.floating-download p {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    text-align: center;
+}
+
+.store-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--primary-pink);
+    color: white;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.store-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 103, 134, 0.4);
+    background: white;
+    color: var(--primary-pink);
+}
+
+.store-badge:hover svg path {
+    fill: var(--primary-pink);
+}
+
+@media (max-width: 480px) {
+    .floating-download {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
 .logo {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2.5rem;
